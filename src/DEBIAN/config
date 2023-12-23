@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+. /usr/share/debconf/confmodule
+
+db_beginblock
+db_input critical thefuck-ai/OPENAI_API_TOKEN || true
+db_endblock

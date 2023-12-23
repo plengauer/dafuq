@@ -1,0 +1,4 @@
+Template: thefuck-ai/OPENAI_API_TOKEN
+Type: string
+Description: OpenAI API Token:
+ Create an OpenAI account at https://platform.openai.com/signup and provide an API Key from https://platform.openai.com/api-keys.
