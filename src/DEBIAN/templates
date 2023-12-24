@@ -1,3 +1,8 @@
+Template thefuck-ai/WARNING
+Type: note
+Description: Warning
+ As part of the default functionality of this package, whenever triggered, the commandline with all its arguments and potentially the stderr of the previously failing command will be sent to a third-party AI service for analysis. You should never use it (and maybe not even install it) when there sensitive data (like tokens or other credentials) or privacy-related data included. By proceeding, you acknowledge that you understand and agree.
+
 Template: thefuck-ai/OPENAI_API_TOKEN
 Type: string
 Description: OpenAI API Token:
