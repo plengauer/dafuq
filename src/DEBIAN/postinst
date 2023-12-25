@@ -2,4 +2,4 @@
 set -e
 . /usr/share/debconf/confmodule
 db_get thefuck-ai/OPENAI_API_TOKEN
-echo "$RET" > /opt/thefuck-ai/OPENAI_TOKEN
+echo "$RET" > /opt/thefuck-ai/OPENAI_API_TOKEN

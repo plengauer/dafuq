@@ -1,7 +1,7 @@
 Package: thefuck-ai
-Version: 0.0.0
+Version: 0.1.0
 Architecture: all
-Depends: bash, curl, head, tail, awk, jq
+Depends: debconf, bash, curl, awk, jq
 Priority: optional
 Maintainer: Philipp Lengauer <p.lengauer@gmail.com>
 Homepage: https://github.com/plengauer/thefuck-ai
