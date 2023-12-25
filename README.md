@@ -3,31 +3,31 @@
 This project adds the command "fuck" to your environment. Whenever a command in an interactive bash fails, the user can simply type "fuck". This will both release their frustration, and trigger this package to try to fix the failed command!
 
 ```
-ubuntu@ip-172-31-38-124:~$ apt-gt install java
+ubuntu@hostname:~$ apt-gt install java
 Command 'apt-gt' not found, did you mean:
   command 'apt-get' from deb apt (2.7.3)
 Try: sudo apt install <deb name>
-ubuntu@ip-172-31-38-124:~$ fuck
-Retrying command to capture what the fuck is going on ...
+ubuntu@hostname:~$ fuck
+Retrying command to see what the fuck is going on ...
 Analyzing and fixing the fuckery ...
 apt-get install java
-ubuntu@ip-172-31-38-124:~$ apt-get install java
+ubuntu@hostname:~$ apt-get install java
 E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)
 E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?
-ubuntu@ip-172-31-38-124:~$ fuck
-Retrying command to capture what the fuck is going on ...
+ubuntu@hostname:~$ fuck
+Retrying command to see what the fuck is going on ...
 Analyzing and fixing the fuckery ...
 sudo apt-get install java
-ubuntu@ip-172-31-38-124:~$ sudo apt-get install java
+ubuntu@hostname:~$ sudo apt-get install java
 Reading package lists... Done
 Building dependency tree... Done
 Reading state information... Done
 E: Unable to locate package java
-ubuntu@ip-172-31-38-124:~$ fuck
-Retrying command to capture what the fuck is going on ...
+ubuntu@hostname:~$ fuck
+Retrying command to see what the fuck is going on ...
 Analyzing and fixing the fuckery ...
 sudo apt-get install default-jdk
-ubuntu@ip-172-31-38-124:~$ sudo apt-get install default-jdk
+ubuntu@hostname:~$ sudo apt-get install default-jdk
 Reading package lists... Done
 Building dependency tree... Done
 Reading state information... Done
