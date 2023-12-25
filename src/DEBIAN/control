@@ -1,8 +1,9 @@
 Package: thefuck-ai
 Version: 0.1.0
 Architecture: all
-Depends: debconf, bash, curl, awk, jq
+Depends: bash, awk, ai
+Enhances: bash
 Priority: optional
 Maintainer: Philipp Lengauer <p.lengauer@gmail.com>
 Homepage: https://github.com/plengauer/thefuck-ai
-Description: An AI-powered shell assistent
+Description: An AI-powered shell assistent capable of repairing commands

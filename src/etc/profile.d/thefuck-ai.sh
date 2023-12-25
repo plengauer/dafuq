@@ -11,14 +11,7 @@ _fuck__rerun_command() {
 _fuck__fix_command() {
   local command="$(cat)"
   local output="$(_fuck__rerun_command $command)"
-  local openai_token="$(cat /opt/thefuck-ai/OPENAI_API_TOKEN)"
-  local system_prompt="$(cat /var/lib/thefuck-ai/system.prompt)"
-  local prompt="Command: $command Output: $output"
-  local request="$(jq -n --arg system_prompt "$system_prompt" --arg prompt "$prompt" '{ model: "gpt-4", messages: [ { role: "system", content: $system_prompt }, { role: "user", content: $prompt } ] }')"
-  # echo "$request" > ./.thefuck-ai.request
-  curl --silent --no-progress-meter https://api.openai.com/v1/chat/completions -H "Authorization: Bearer $openai_token" -H "Content-Type: application/json" -X POST -d "$request" \
-    # | tee ./.thefuck-ai.response \
-    | jq -r '.choices[0].message.content'
+  AI_SYSTEM_PROMPT="$(cat /var/lib/thefuck-ai/system.prompt)" ai "Command: $command Output: $output"
 }
 
 _fuck__suggest_command() {

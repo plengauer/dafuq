@@ -4,6 +4,5 @@ set -e
 
 db_beginblock
 db_input critical thefuck-ai/WARNING || true
-db_input critical thefuck-ai/OPENAI_API_TOKEN || true
 db_endblock
 db_go
