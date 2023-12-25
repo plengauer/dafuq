@@ -5,7 +5,7 @@ _fuck__print_error() {
 }
 
 _fuck__rerun_command() {
-  echo "Retrying command to capture what the fuck is going on ..." 1>&2
+  echo "Retrying command to see what the fuck is going on ..." 1>&2
   bash -c "$*" 2>&1 1> /dev/null
 }
 
