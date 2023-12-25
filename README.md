@@ -1,6 +1,6 @@
 # TheFuck-AI
 
-This project adds the command "fuck" to your environment. Whenever a command in an interactive bash fails, the user can simply type "fuck". This will both release their frustration, and trigger this package to try to fix the failed command!
+This project adds the command "fuck" to your environment. Whenever a command in an interactive bash fails, the user can simply run "fuck". This will both release their frustration, and trigger this package to try to fix the failed command!
 
 ```
 ubuntu@hostname:~$ apt-gt install java
