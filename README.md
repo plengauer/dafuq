@@ -51,3 +51,5 @@ Need to get 135 MB of archives.
 After this operation, 333 MB of additional disk space will be used.
 Do you want to continue? [Y/n]
 ```
+
+Install via `wget -O - https://raw.githubusercontent.com/plengauer/thefuck-ai/main/INSTALL.sh | sh -E`
