@@ -5,12 +5,14 @@ _fuck__print_error() {
 }
 
 _fuck__rerun_command() {
+  echo "Retrying command to capture what the fuck is going on ..." 1>&2
   bash -c "$*" 2>&1 1> /dev/null
 }
 
 _fuck__fix_command() {
   local command="$(cat)"
   local output="$(_fuck__rerun_command $command)"
+  echo "Analyzing and fixing the fuckery ..."
   AI_SYSTEM_PROMPT="$(cat /var/lib/thefuck-ai/system.prompt)" ai "Command: $command Output: $output"
 }
 

@@ -1,5 +1,5 @@
 Package: thefuck-ai
-Version: 0.1.0
+Version: 0.2.0
 Architecture: all
 Depends: bash, awk, ai
 Enhances: bash
