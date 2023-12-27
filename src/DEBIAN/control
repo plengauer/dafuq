@@ -1,9 +1,10 @@
-Package: thefuck-ai
-Version: 0.3.0
+Package: dafuq
+Replaces: thefuck-ai
+Version: 0.4.0
 Architecture: all
 Depends: bash, awk, ai
 Enhances: bash
 Priority: optional
 Maintainer: Philipp Lengauer <p.lengauer@gmail.com>
-Homepage: https://github.com/plengauer/thefuck-ai
+Homepage: https://github.com/plengauer/dafuq
 Description: An AI-powered shell assistent capable of repairing commands

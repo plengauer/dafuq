@@ -3,6 +3,6 @@ set -e
 . /usr/share/debconf/confmodule
 
 db_beginblock
-db_input critical thefuck-ai/WARNING || true
+db_input critical dafuq/WARNING || true
 db_endblock
 db_go

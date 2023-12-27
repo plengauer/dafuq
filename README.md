@@ -1,20 +1,20 @@
-# TheFuck-AI
+# Dafuq
 
-This project adds the command "fuck" to your environment. Whenever a command in an interactive bash fails, the user can simply run "fuck". This will both release their frustration, and trigger this package to try to fix the failed command!
+This project adds the command "dafuq" (and the aliases "fuck" and "wtf") to your environment. Whenever a command in an interactive bash fails, the user can simply run "fuck". This will both release their frustration, and trigger this package to try to fix the failed command!
 
 ```
 ubuntu@hostname:~$ apt-gt install java
 Command 'apt-gt' not found, did you mean:
   command 'apt-get' from deb apt (2.7.3)
 Try: sudo apt install <deb name>
-ubuntu@hostname:~$ fuck
+ubuntu@hostname:~$ dafuq
 Retrying command to see what the fuck is going on ...
 Analyzing and fixing the fuckery ...
 apt-get install java
 ubuntu@hostname:~$ apt-get install java
 E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)
 E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?
-ubuntu@hostname:~$ fuck
+ubuntu@hostname:~$ dafuq
 Retrying command to see what the fuck is going on ...
 Analyzing and fixing the fuckery ...
 sudo apt-get install java
@@ -23,7 +23,7 @@ Reading package lists... Done
 Building dependency tree... Done
 Reading state information... Done
 E: Unable to locate package java
-ubuntu@hostname:~$ fuck
+ubuntu@hostname:~$ dafuq
 Retrying command to see what the fuck is going on ...
 Analyzing and fixing the fuckery ...
 sudo apt-get install default-jdk
@@ -52,4 +52,4 @@ After this operation, 333 MB of additional disk space will be used.
 Do you want to continue? [Y/n]
 ```
 
-Install via `wget -O - https://raw.githubusercontent.com/plengauer/thefuck-ai/main/INSTALL.sh | sh -E`
+Install via `wget -O - https://raw.githubusercontent.com/plengauer/dafuq/main/INSTALL.sh | sh -E`
