@@ -1,6 +1,6 @@
 Package: dafuq
 Replaces: thefuck-ai
-Version: 0.4.1
+Version: 0.5.0
 Architecture: all
 Depends: bash, awk, ai
 Enhances: bash
