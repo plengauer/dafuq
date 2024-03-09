@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 _dafuq__print_error() {
   echo "Zero fucks given! $*" 1>&2
@@ -11,7 +11,7 @@ _dafuq__rerun_command() {
 
 _dafuq__fix_command() {
   local command="$(cat)"
-  local output="$(_dafuq__rerun_command $command)"
+  local output="$(_dafuq__rerun_command "$command")"
   echo "Analyzing and fixing the fuckery ..." 1>&2
   AI_SYSTEM_PROMPT="$(cat /var/lib/dafuq/system.prompt)" ai "Command: $command Output: $output"
 }
