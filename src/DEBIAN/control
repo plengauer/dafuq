@@ -1,8 +1,8 @@
 Package: dafuq
 Replaces: thefuck-ai
-Version: 0.5.0
+Version: 0.5.1
 Architecture: all
-Depends: bash, awk, ai
+Depends: bash, debconf, coreutils, util-linux, ai
 Enhances: bash
 Priority: optional
 Maintainer: Philipp Lengauer <p.lengauer@gmail.com>
