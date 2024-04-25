@@ -52,4 +52,4 @@ After this operation, 333 MB of additional disk space will be used.
 Do you want to continue? [Y/n]
 ```
 
-Install via `wget -O - https://raw.githubusercontent.com/plengauer/dafuq/main/INSTALL.sh | sh -E`
+Install via `wget -O - https://raw.githubusercontent.com/plengauer/dafuq/main/INSTALL.sh | sh`
