@@ -4,5 +4,10 @@
     "config:recommended"
   ],
   "prHourlyLimit": 0,
-  "prConcurrentLimit": 0
+  "prConcurrentLimit": 0,
+  "automerge": true,
+  "automergeType": "pr",
+  "assignAutomerge": true,
+  "assignees": ["plengauer"],
+  "reviewers": []
 }
