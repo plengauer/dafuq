@@ -24,3 +24,5 @@ jobs:
           RENOVATE_REPOSITORIES: ${{ github.repository }}
         with:
           token: ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+      - run: sleep 15
+      - run: sudo docker logs "$(sudo docker container ls -q)"
