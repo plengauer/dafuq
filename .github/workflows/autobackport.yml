@@ -55,6 +55,7 @@ jobs:
         with:
           secrets_to_redact: |-
             ${{ github.token }}
+            ${{ secrets.ACTIONS_GITHUB_TOKEN || github.token }}
             ${{ secrets.ACTIONS_GITHUB_TOKEN }}
             ${{ secrets.OPENAI_TOKEN }}
       - id: autoversion
