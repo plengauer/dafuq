@@ -169,7 +169,7 @@ jobs:
     if: ${{ (!(github.event.repository.fork)) && github.event_name != 'push' && (github.event_name != 'workflow_dispatch' && github.event_name != 'workflow_call' || inputs.operation == '' || inputs.operation == 'clean_cache_memories') }}
     runs-on: ubuntu-slim
     permissions:
-      actions: write
+      actions: read
     steps:
       - uses: plengauer/opentelemetry-github/actions/instrument/job@2169fb0fa9a8260fde99a2a185bbf99a5d63546e
         env:
