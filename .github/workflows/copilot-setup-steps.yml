@@ -7,7 +7,7 @@ jobs:
   copilot-setup-steps:
     runs-on: ubuntu-latest
     steps:
-      - uses: plengauer/opentelemetry-github/actions/instrument/job@571cbe85f925e8ba395a5fca68f47ef9c536106c # v5.60.0
+      - uses: plengauer/opentelemetry-github/actions/instrument/job@592586c4b7c563e6c531db71680422bb3953bcb9 # v5.61.0
         env:
           OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
           OTEL_EXPORTER_OTLP_HEADERS: ${{ secrets.OTEL_EXPORTER_OTLP_HEADERS }}
