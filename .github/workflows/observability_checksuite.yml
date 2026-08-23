@@ -12,7 +12,7 @@ jobs:
       checks: read
       actions: read
     steps:
-      - uses: plengauer/opentelemetry-github/actions/instrument/checksuite@a00ae915cd63b3c372c912ff7019e08a0934b441 # v5.61.1
+      - uses: plengauer/opentelemetry-github/actions/instrument/checksuite@be259b5ae1e13e2398a8b96dce8baeaddac0663d # v5.61.2
         env:
           OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
           OTEL_EXPORTER_OTLP_HEADERS: ${{ secrets.OTEL_EXPORTER_OTLP_HEADERS }}
