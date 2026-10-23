@@ -111,6 +111,17 @@ jobs:
       text: ${{ steps.sanitized.outputs.text }}
       title: ${{ steps.sanitized.outputs.title }}
     steps:
+      - uses: plengauer/opentelemetry-github/actions/instrument/job@cae29061ec48de46feefdc8131c776a9af11da6f # v5.64.0
+        env:
+          OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
+          OTEL_EXPORTER_OTLP_HEADERS: ${{ secrets.OTEL_EXPORTER_OTLP_HEADERS }}
+        with:
+          secrets_to_redact: |-
+            ${{ github.token }}
+            ${{ secrets.COPILOT_GITHUB_TOKEN }}
+            ${{ secrets.GH_AW_GITHUB_MCP_SERVER_TOKEN }}
+            ${{ secrets.GH_AW_GITHUB_TOKEN }}
+            ${{ secrets.GITHUB_TOKEN }}
       - name: Setup Scripts
         id: setup
         uses: github/gh-aw-actions/setup@d9128eb3ea40c18b77c76184eda03c0ff2608d79 # v0.93.2
@@ -435,6 +446,7 @@ jobs:
     permissions:
       contents: read
       issues: read
+      actions: read
     timeout-minutes: 60
     env:
       DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
@@ -477,6 +489,19 @@ jobs:
       shell_expansion_guard_rejected: ${{ steps.detect-agent-errors.outputs.shell_expansion_guard_rejected || 'false' }}
       unknown_model_ai_credits: ${{ steps.parse-mcp-gateway.outputs.unknown_model_ai_credits || 'false' }}
     steps:
+      - uses: plengauer/opentelemetry-github/actions/instrument/job@cae29061ec48de46feefdc8131c776a9af11da6f # v5.64.0
+        env:
+          OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
+          OTEL_EXPORTER_OTLP_HEADERS: ${{ secrets.OTEL_EXPORTER_OTLP_HEADERS }}
+        with:
+          secrets_to_redact: |-
+            ${{ github.token }}
+            ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+            ${{ secrets.COPILOT_GITHUB_TOKEN }}
+            ${{ secrets.GH_AW_GITHUB_MCP_SERVER_TOKEN || secrets.GH_AW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+            ${{ secrets.GH_AW_GITHUB_MCP_SERVER_TOKEN }}
+            ${{ secrets.GH_AW_GITHUB_TOKEN }}
+            ${{ secrets.GITHUB_TOKEN }}
       - name: Setup Scripts
         id: setup
         uses: github/gh-aw-actions/setup@d9128eb3ea40c18b77c76184eda03c0ff2608d79 # v0.93.2
@@ -1138,7 +1163,6 @@ jobs:
           GIT_COMMITTER_EMAIL: github-actions[bot]@users.noreply.github.com
           GIT_COMMITTER_NAME: github-actions[bot]
           RUNNER_TEMP: ${{ runner.temp }}
-          TRACEPARENT: ${{ env.GITHUB_AW_OTEL_TRACE_ID != '' && env.GITHUB_AW_OTEL_PARENT_SPAN_ID != '' && format('00-{0}-{1}-01', env.GITHUB_AW_OTEL_TRACE_ID, env.GITHUB_AW_OTEL_PARENT_SPAN_ID) || '' }}
       - name: Log GitHub rate limits at agent end
         if: always()
         continue-on-error: true
@@ -1380,10 +1404,8 @@ jobs:
       - detection
       - safe_outputs
     if: >
-      always() && (needs.agent.result != 'skipped' || needs.activation.outputs.lockdown_check_failed == 'true' ||
-      needs.activation.outputs.oauth_token_check_failed == 'true' || needs.activation.outputs.stale_lock_file_failed == 'true' ||
-      needs.activation.outputs.secret_verification_result == 'failed' || needs.activation.outputs.daily_ai_credits_exceeded == 'true' ||
-      needs.activation.outputs.daily_ai_credits_guardrail_status == 'structural_error' || needs.activation.outputs.daily_ai_credits_guardrail_status == 'transient_error')
+      always() && (needs.agent.result != 'skipped' || needs.activation.outputs.lockdown_check_failed == 'true' || needs.activation.outputs.oauth_token_check_failed == 'true' || needs.activation.outputs.stale_lock_file_failed == 'true' || needs.activation.outputs.secret_verification_result == 'failed' || needs.activation.outputs.daily_ai_credits_exceeded == 'true' || needs.activation.outputs.daily_ai_credits_guardrail_status == 'structural_error' || needs.activation.outputs.daily_ai_credits_guardrail_status == 'transient_error')
+
     runs-on: ubuntu-slim
     # Permissions for the conclusion job (workflow permissions default to none).
     permissions:
@@ -1406,6 +1428,14 @@ jobs:
       tools_reported: ${{ steps.missing_tool.outputs.tools_reported }}
       total_count: ${{ steps.missing_tool.outputs.total_count }}
     steps:
+      - uses: plengauer/opentelemetry-github/actions/instrument/job@cae29061ec48de46feefdc8131c776a9af11da6f # v5.64.0
+        env:
+          OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
+          OTEL_EXPORTER_OTLP_HEADERS: ${{ secrets.OTEL_EXPORTER_OTLP_HEADERS }}
+        with:
+          secrets_to_redact: |-
+            ${{ github.token }}
+            ${{ secrets.GH_AW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
       - name: Setup Scripts
         id: setup
         uses: github/gh-aw-actions/setup@d9128eb3ea40c18b77c76184eda03c0ff2608d79 # v0.93.2
@@ -1735,6 +1765,7 @@ jobs:
     # Permissions for the detection job (workflow permissions default to none).
     permissions:
       contents: read
+      actions: read
     timeout-minutes: 10
     env:
       GH_AW_RUNTIME_FEATURES: ${{ vars.GH_AW_RUNTIME_FEATURES }}
@@ -1745,6 +1776,16 @@ jobs:
       detection_success: ${{ steps.detection_conclusion.outputs.success }}
       run_detection: ${{ steps.detection_guard.outputs.run_detection }}
     steps:
+      - uses: plengauer/opentelemetry-github/actions/instrument/job@cae29061ec48de46feefdc8131c776a9af11da6f # v5.64.0
+        env:
+          OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
+          OTEL_EXPORTER_OTLP_HEADERS: ${{ secrets.OTEL_EXPORTER_OTLP_HEADERS }}
+        with:
+          secrets_to_redact: |-
+            ${{ github.token }}
+            ${{ secrets.COPILOT_GITHUB_TOKEN }}
+            ${{ secrets.GH_AW_DEFAULT_OTLP_ENDPOINT }}
+            ${{ secrets.GH_AW_DEFAULT_OTLP_HEADERS }}
       - name: Setup Scripts
         id: setup
         uses: github/gh-aw-actions/setup@d9128eb3ea40c18b77c76184eda03c0ff2608d79 # v0.93.2
@@ -1903,7 +1944,6 @@ jobs:
           GIT_COMMITTER_EMAIL: github-actions[bot]@users.noreply.github.com
           GIT_COMMITTER_NAME: github-actions[bot]
           RUNNER_TEMP: ${{ runner.temp }}
-          TRACEPARENT: ${{ env.GITHUB_AW_OTEL_TRACE_ID != '' && env.GITHUB_AW_OTEL_PARENT_SPAN_ID != '' && format('00-{0}-{1}-01', env.GITHUB_AW_OTEL_TRACE_ID, env.GITHUB_AW_OTEL_PARENT_SPAN_ID) || '' }}
           WORKFLOW_NAME: "Autotriage"
           WORKFLOW_DESCRIPTION: "Automatically applies appropriate labels to newly created issues based on their content"
           HAS_PATCH: ${{ needs.agent.outputs.has_patch }}
@@ -2090,6 +2130,14 @@ jobs:
       setup-span-id: ${{ steps.setup.outputs.span-id }}
       setup-trace-id: ${{ steps.setup.outputs.trace-id }}
     steps:
+      - uses: plengauer/opentelemetry-github/actions/instrument/job@cae29061ec48de46feefdc8131c776a9af11da6f # v5.64.0
+        env:
+          OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
+          OTEL_EXPORTER_OTLP_HEADERS: ${{ secrets.OTEL_EXPORTER_OTLP_HEADERS }}
+        with:
+          secrets_to_redact: |-
+            ${{ github.token }}
+            ${{ secrets.GITHUB_TOKEN }}
       - name: Setup Scripts
         id: setup
         uses: github/gh-aw-actions/setup@d9128eb3ea40c18b77c76184eda03c0ff2608d79 # v0.93.2
@@ -2132,6 +2180,7 @@ jobs:
     permissions:
       issues: write
       pull-requests: write
+      actions: read
     timeout-minutes: 45
     env:
       GH_AW_AGENT_AIC: ${{ needs.agent.outputs.aic }}
@@ -2168,6 +2217,16 @@ jobs:
       process_safe_outputs_processed_count: ${{ steps.process_safe_outputs.outputs.processed_count }}
       process_safe_outputs_status: ${{ steps.process_safe_outputs.outputs.status }}
     steps:
+      - uses: plengauer/opentelemetry-github/actions/instrument/job@cae29061ec48de46feefdc8131c776a9af11da6f # v5.64.0
+        env:
+          OTEL_EXPORTER_OTLP_ENDPOINT: ${{ secrets.OTEL_EXPORTER_OTLP_ENDPOINT }}
+          OTEL_EXPORTER_OTLP_HEADERS: ${{ secrets.OTEL_EXPORTER_OTLP_HEADERS }}
+        with:
+          secrets_to_redact: |-
+            ${{ github.token }}
+            ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+            ${{ secrets.GH_AW_GITHUB_TOKEN != '' && 'pat' || 'github_actions' }}
+            ${{ secrets.GH_AW_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
       - name: Setup Scripts
         id: setup
         uses: github/gh-aw-actions/setup@d9128eb3ea40c18b77c76184eda03c0ff2608d79 # v0.93.2
